@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         HamsterKombatGame Auto Buyer
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Automate purchases in HamsterKombatGame with style!
 // @match        *hamsterkombatgame.io/clicker*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=hamsterkombatgame.io
@@ -15,6 +15,13 @@
 (function () {
     'use strict';
 
+    // Default configuration
+    const config = {
+        balanceLimit: 10000,
+        minDelay: 2500,
+        maxDelay: 4000,
+    };
+    
     class HamsterAPI {
         constructor(authToken) {
             this.baseUrl = "https://api.hamsterkombatgame.io/clicker";
@@ -404,13 +411,6 @@
             }
         }
     }
-
-    // Default configuration
-    const config = {
-        balanceLimit: 10000,
-        minDelay: 1000,
-        maxDelay: 3000,
-    };
 
     // Initialize UI
     const ui = new UI(config);
