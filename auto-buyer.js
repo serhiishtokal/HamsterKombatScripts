@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         HamsterKombatGame Auto Buyer
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Automate purchases in HamsterKombatGame with style!
 // @match        *hamsterkombatgame.io/clicker*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=hamsterkombatgame.io
@@ -20,6 +20,7 @@
         balanceLimit: 10000,
         minDelay: 2500,
         maxDelay: 4000,
+        minimumBalanceMultiplier: 0.5,
     };
     
     class HamsterAPI {
@@ -340,7 +341,7 @@
                 this.currentBalanceDiv.textContent = `Current Balance: ${this.formatNumber(balance)} coins`;
 
                 // Set default balance limit to -40% of current balance
-                this.balanceLimitInput.value = Math.floor(balance * 0.6);
+                this.balanceLimitInput.value = Math.floor(balance * config.minimumBalanceMultiplier);
 
                 // Store API and balance for use in Clicker
                 this.api = api;
